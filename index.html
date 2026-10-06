@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Xem Hoạt Hình Trực Tuyến - CartoonKids</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. Fixed Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="#">🎬 Cartoon<span>Kids</span></a>
+            </div>
+
+            <!-- Head-link: Chứa các liên kết trang -->
+            <nav class="head-link">
+                <ul>
+                    <li><a href="#" class="active">Trang chủ</a></li>
+                    <li><a href="#">Hoạt hình bộ</a></li>
+                    <li><a href="#">Chiếu rạp</a></li>
+                    <li><a href="#">Thuyết minh</a></li>
+                    <li><a href="#">Yêu thích</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search & Filter -->
+            <div class="header-search">
+                <input type="text" placeholder="Tìm kiếm phim hoạt hình...">
+                <select class="sort-select">
+                    <option value="new">Mới cập nhật</option>
+                    <option value="views">Nhiều lượt xem nhất</option>
+                    <option value="rating">Đánh giá cao</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Content Layout -->
+    <div class="content-wrapper">
+        <div class="container layout-grid">
+            
+            <!-- Left Content: Danh sách video có sẵn -->
+            <aside class="left-content">
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Danh Sách Video</h3>
+                    <ul class="video-list">
+                        <li class="video-item active" onclick="playYouTube('bTqVqk7FSmY', 'Hoạt Hình: Những Chú Chim Tinh Nghịch (FullHD)')">
+                            <div class="video-thumb">
+                                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=120&auto=format&fit=crop&q=80" alt="Video 1">
+                                <span class="badge">1080p</span>
+                            </div>
+                            <div class="video-info">
+                                <h4>Những Chú Chim Tinh Nghịch</h4>
+                                <p>Thuyết minh | 1.2M lượt xem</p>
+                            </div>
+                        </li>
+
+                        <li class="video-item" onclick="playHTML5('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', 'Hoạt Hình 3D: Chú Thỏ Vui Nhộn (Big Buck Bunny HD)')">
+                            <div class="video-thumb">
+                                <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=120&auto=format&fit=crop&q=80" alt="Video 2">
+                                <span class="badge">HD 720p</span>
+                            </div>
+                            <div class="video-info">
+                                <h4>Chú Thỏ Vui Nhộn (3D)</h4>
+                                <p>Thuyết minh | 950K lượt xem</p>
+                            </div>
+                        </li>
+
+                        <li class="video-item" onclick="playYouTube('TcMBFSGVi1c', 'Thế Giới Động Vật Kỳ Thú - Tập 3')">
+                            <div class="video-thumb">
+                                <img src="https://images.unsplash.com/photo-1563089145-599997674d42?w=120&auto=format&fit=crop&q=80" alt="Video 3">
+                                <span class="badge">1080p</span>
+                            </div>
+                            <div class="video-info">
+                                <h4>Thế Giới Động Vật Kỳ Thú</h4>
+                                <p>Thuyết minh | 820K lượt xem</p>
+                            </div>
+                        </li>
+
+                        <li class="video-item" onclick="playHTML5('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', 'Thế Giới Phép Thuật Giấc Mơ Voi (Full HD)')">
+                            <div class="video-thumb">
+                                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=120&auto=format&fit=crop&q=80" alt="Video 4">
+                                <span class="badge">1080p</span>
+                            </div>
+                            <div class="video-info">
+                                <h4>Giấc Mơ Voi Phép Thuật</h4>
+                                <p>Thuyết minh | 670K lượt xem</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tiêu chí an toàn -->
+                <div class="safety-banner">
+                    <h4>⭐ Cam kết an toàn</h4>
+                    <ul>
+                        <li>✓ 100% Nội dung lành mạnh cho trẻ</li>
+                        <li>✓ Thuyết minh Tiếng Việt chuẩn</li>
+                        <li>✓ Không quảng cáo độc hại</li>
+                        <li>✓ Chất lượng chuẩn HD - Full HD</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Right Content: Khu vực xem video chính -->
+            <main class="right-content">
+                <div class="player-wrapper">
+                    <!-- Trình phát Video (iframe YouTube hoặc thẻ video HTML5) -->
+                    <div class="video-display-area" id="videoArea">
+                        <iframe id="youtubePlayer" width="100%" height="100%" src="https://www.youtube.com/embed/bTqVqk7FSmY?autoplay=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <video id="html5Player" controls style="display: none; width: 100%; height: 100%;">
+                            <source id="videoSource" src="" type="video/mp4">
+                            Trình duyệt của bạn không hỗ trợ thẻ video.
+                        </video>
+                    </div>
+
+                    <!-- Thông tin chi tiết phim đang phát -->
+                    <div class="video-details">
+                        <div class="details-header">
+                            <h2 id="currentTitle">Hoạt Hình: Những Chú Chim Tinh Nghịch (FullHD)</h2>
+                            <div class="tags">
+                                <span class="tag tag-hd">Full HD 1080p</span>
+                                <span class="tag tag-lang">Thuyết Minh Tiếng Việt</span>
+                                <span class="tag tag-adfree">Không quảng cáo</span>
+                            </div>
+                        </div>
+                        <p class="description">
+                            Bộ phim hoạt hình đặc sắc được chọn lọc kỹ càng, mang đến tiếng cười vui nhộn và bài học giáo dục bổ ích dành cho thiếu nhi. Âm thanh lồng tiếng chuẩn, hình ảnh sắc nét giúp các bạn nhỏ có trải nghiệm xem phim an toàn và trọn vẹn nhất.
+                        </p>
+                        
+                        <div class="action-buttons">
+                            <button class="btn btn-primary">⭐ Thêm vào yêu thích</button>
+                            <button class="btn btn-secondary">🔗 Chia sẻ</button>
+                            <button class="btn btn-secondary">⬇ Tải về (HD)</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- 3. Footer -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>🎬 CartoonKids - Web Xem Hoạt Hình Trực Tuyến</h3>
+                <p>Nền tảng giải trí và giáo dục video hoạt hình an toàn, chọn lọc hàng đầu cho trẻ em.</p>
+            </div>
+            <div class="footer-links">
+                <p>Bản quyền © 2026 <strong>CartoonKids Online</strong>. Bảo lưu mọi quyền.</p>
+                <p>Chất lượng video tiêu chuẩn: HD 720p - Full HD 1080p | 100% Không quảng cáo.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script điều khiển video linh hoạt -->
+    <script>
+        function playYouTube(videoId, title) {
+            const yt = document.getElementById('youtubePlayer');
+            const html5 = document.getElementById('html5Player');
+            html5.pause();
+            html5.style.display = 'none';
+            yt.style.display = 'block';
+            yt.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            document.getElementById('currentTitle').innerText = title;
+            updateActiveItem(event.currentTarget);
+        }
+
+        function playHTML5(videoSrc, title) {
+            const yt = document.getElementById('youtubePlayer');
+            const html5 = document.getElementById('html5Player');
+            yt.src = '';
+            yt.style.display = 'none';
+            html5.style.display = 'block';
+            html5.src = videoSrc;
+            html5.play();
+            document.getElementById('currentTitle').innerText = title;
+            updateActiveItem(event.currentTarget);
+        }
+
+        function updateActiveItem(element) {
+            document.querySelectorAll('.video-item').forEach(item => item.classList.remove('active'));
+            if(element) element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
